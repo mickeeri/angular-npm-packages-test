@@ -2,7 +2,156 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "backoffice-root": {
+      "root": "apps/backoffice-root/",
+      "sourceRoot": "apps/backoffice-root/src",
+      "projectType": "application",
+      "prefix": "backoffice",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/backoffice-root",
+            "index": "apps/backoffice-root/src/index.html",
+            "main": "apps/backoffice-root/src/main.ts",
+            "polyfills": "apps/backoffice-root/src/polyfills.ts",
+            "tsConfig": "apps/backoffice-root/tsconfig.app.json",
+            "assets": [
+              "apps/backoffice-root/src/favicon.ico",
+              "apps/backoffice-root/src/assets"
+            ],
+            "styles": ["apps/backoffice-root/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/backoffice-root/src/environments/environment.ts",
+                  "with": "apps/backoffice-root/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "backoffice-root:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "backoffice-root:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "backoffice-root:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/backoffice-root/tsconfig.app.json",
+              "apps/backoffice-root/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/backoffice-root/jest.config.js",
+            "tsConfig": "apps/backoffice-root/tsconfig.spec.json",
+            "setupFile": "apps/backoffice-root/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "backoffice-root-e2e": {
+      "root": "apps/backoffice-root-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/backoffice-root-e2e/cypress.json",
+            "tsConfig": "apps/backoffice-root-e2e/tsconfig.e2e.json",
+            "devServerTarget": "backoffice-root:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "backoffice-root:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/backoffice-root-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "logging": {
+      "root": "libs/logging",
+      "sourceRoot": "libs/logging/src",
+      "projectType": "library",
+      "prefix": "backoffice",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logging/tsconfig.lib.json",
+              "libs/logging/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/logging/jest.config.js",
+            "tsConfig": "libs/logging/tsconfig.spec.json",
+            "setupFile": "libs/logging/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -18,5 +167,6 @@
     "@nrwl/schematics:library": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "backoffice-root"
 }
