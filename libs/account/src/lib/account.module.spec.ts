@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { LoggingModule } from './logging.module';
+import { AccountModule } from './account.module';
 
-describe('LoggingModule', () => {
+describe('AccountModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [LoggingModule]
+      imports: [AccountModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(LoggingModule).toBeDefined();
+    expect(AccountModule).toBeDefined();
   });
 });

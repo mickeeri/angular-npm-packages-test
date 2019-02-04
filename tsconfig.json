@@ -13,7 +13,7 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@backoffice/logging": ["libs/logging/src/index.ts"]
+      "@backoffice/account": ["libs/account/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

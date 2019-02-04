@@ -10,9 +10,22 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(
+      [
+        {
+          path: 'account',
+          loadChildren: './lazy.module#LazyModule'
+        }
+      ],
+      {
+        initialNavigation: 'enabled'
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+// Copied LazyModule from this link because you cannot lazy load external packages in angular
+// https://github.com/angular/angular-cli/issues/6373#issuecomment-453006158

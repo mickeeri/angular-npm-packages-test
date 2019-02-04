@@ -14,7 +14,7 @@
     "backoffice-root-e2e": {
       "tags": []
     },
-    "logging": {
+    "account": {
       "tags": []
     }
   }

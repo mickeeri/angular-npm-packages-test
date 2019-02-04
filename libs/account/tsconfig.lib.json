@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/logging",
+    "outDir": "../../dist/out-tsc/libs/account",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

@@ -120,9 +120,9 @@
         }
       }
     },
-    "logging": {
-      "root": "libs/logging",
-      "sourceRoot": "libs/logging/src",
+    "account": {
+      "root": "libs/account",
+      "sourceRoot": "libs/account/src",
       "projectType": "library",
       "prefix": "backoffice",
       "architect": {
@@ -130,8 +130,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/logging/tsconfig.lib.json",
-              "libs/logging/tsconfig.spec.json"
+              "libs/account/tsconfig.lib.json",
+              "libs/account/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -139,9 +139,9 @@
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "libs/logging/jest.config.js",
-            "tsConfig": "libs/logging/tsconfig.spec.json",
-            "setupFile": "libs/logging/src/test-setup.ts"
+            "jestConfig": "libs/account/jest.config.js",
+            "tsConfig": "libs/account/tsconfig.spec.json",
+            "setupFile": "libs/account/src/test-setup.ts"
           }
         }
       },
